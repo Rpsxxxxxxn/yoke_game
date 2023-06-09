@@ -1,0 +1,14 @@
+# apacheイメージ
+FROM httpd:2.4
+
+# ポート設定
+EXPOSE 80
+
+# ワーキングディレクトリを指定
+WORKDIR /usr/local/apache2/htdocs/
+
+# ファイルコピー
+COPY . .
+
+# コンテナ起動時に実行するコマンド
+CMD [ "httpd-foreground" ]

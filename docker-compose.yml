@@ -1,0 +1,54 @@
+version: '3.8'
+services:
+  # クライアントサイドのコンテナ
+  web:
+    build: ./web
+    ports:
+      - 80:80
+    volumes:
+      - ./web:/var/www/html
+    networks:
+      - frontend
+
+  # サーバーサイドのコンテナ
+  middle:
+    build: ./middle
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - MYSQL_HOST=db
+      - MYSQL_USER=yokegame
+      - MYSQL_PASSWORD=yokegame
+      - MYSQL_DATABASE=yokegame
+    networks:
+      - frontend
+      - backend
+
+  # データベースのコンテナ
+  db:
+    image: mysql:5.7
+    platform: linux/amd64
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: yokegame
+      MYSQL_USER: yokegame
+      MYSQL_PASSWORD: yokegame
+      MYSQL_DATABASE: yokegame
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - backend
+
+# ネットワークの設定
+networks:
+  # フロントエンド用のネットワーク
+  frontend:
+    driver: bridge
+
+  # バックエンド用のネットワーク
+  backend:
+    driver: bridge

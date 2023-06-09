@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #edfefc;
+}
+#canvas {
+  left: 50%;
+  top: 50%;
+  border-radius: 20px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 20px 5px #bfd2db;
+}
+.score-text {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 3px #bfd2db;
+  font-family: 'arial';
+  color: #000;
+  position: absolute;
+  left: 50%;
+  font-size: 50px;
+  top: 1vh;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+#ranking {
+  background-color: white;
+  padding: 20px;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 5px #bfd2db;
+  z-index: 1;
+}
+
+.re-play {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 20px 10px #bfd2db;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5vh;
+  transition: 0.5s;
+  z-index: 1;
+}
+.re-play:hover {
+  transition: 0.5s;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 10px #bfd2db;
+  z-index: 1;
+}
+.move-help {
+  position: absolute;
+  left: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  bottom: 5vh;
+  box-shadow: 0px 0px 20px 5px #bfd2db;
+  z-index: 1;
+}

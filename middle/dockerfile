@@ -1,0 +1,19 @@
+# NODEJSイメージ
+FROM node:16.3.0
+
+# ポート設定
+EXPOSE 8080
+
+# ワーキングディレクトリを指定
+WORKDIR /usr/src/app
+
+# パッケージインストール
+COPY package*.json ./
+
+RUN npm install
+
+# ファイルコピー
+COPY . .
+
+# コンテナ起動時に実行するコマンド
+CMD [ "node", "index.js" ]
